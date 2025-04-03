@@ -114,6 +114,6 @@ def menu_principal():
             print("Hasta luego!")
             break
         else:
-            print("Opción inválida. Por favor, inténtelo de nuevo.")
+            print("\nOpción inválida. Por favor, inténtelo de nuevo.")
 
 menu_principal()
