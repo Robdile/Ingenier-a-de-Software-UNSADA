@@ -99,15 +99,15 @@ def menu_principal():
                 
         elif opcion == "4":
             division()
-            print("1. Volver a Dividir")
-            print("2. Volver al menú principal")
+            print("\n1. Volver a Dividir")
+            print("\n2. Volver al menú principal")
             sub_opcion = input("Ingrese su opción: ")
             if sub_opcion == "1":
                 division()
             elif sub_opcion == "2":
                 return menu_principal()
             else:
-                print("Opción inválida. Regresando al menú principal.")
+                print("\nOpción inválida. Regresando al menú principal.")
 
 
         elif opcion == "0":
