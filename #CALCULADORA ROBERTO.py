@@ -19,16 +19,30 @@ def suma():
 
 
 def resta():
-    num1 = float(input("Ingrese el primer número: "))
-    num2 = float(input("Ingrese el segundo número: "))
+    num1 = float(input("\nIngrese el primer número: "))
+    num2 = float(input("\nIngrese el segundo número: "))
     resultado = num1 - num2
     print(f"El resultado de la resta es: {resultado}")
 
 def multiplicacion():
-    num1 = float(input("Ingrese el primer número: "))
-    num2 = float(input("Ingrese el segundo número: "))
-    resultado = num1 * num2
-    print(f"El resultado de la multiplicación es: {resultado}")
+    while True:
+        num1 = input("\nIngrese el primer número: ")
+        num2 = input("\nIngrese el segundo número: ")
+
+        if not num1.isdigit() or not num2.isdigit():  # Verifica que sean numéricos
+            print("\n⚠ Error: Debe ingresar solo números enteros positivos.")
+            continue  # Repite la solicitud
+
+        num1, num2 = int(num1), int(num2)  # Convierte a enteros
+
+        if num1 < 0 or num2 < 0:  # Verifica que sean positivos
+            print("\n⚠ Error: Debe ingresar solo números enteros POSITIVOS.")
+            continue  # Repite la solicitud
+
+        resultado = num1 * num2
+        print(f"\nEl resultado de la multipicación es: {resultado}")
+        break  # Sale del bucle al obtener datos válidos
+
 
 def division():
     num1 = float(input("Ingrese el primer número: "))
@@ -85,17 +99,19 @@ def menu_principal():
 
 
         elif opcion == "3":
-            multiplicacion()
-            print("1. Volver a Multiplicar")
-            print("2. Volver al menú principal")
-            sub_opcion = input("Ingrese su opción: ")
-            if sub_opcion == "1":
-                multiplicacion()
-            elif sub_opcion == "2":
-                return menu_principal()
-            else:
-                print("Opción inválida. Regresando al menú principal.")
+            while True:   
+                multiplicacion()  # llama a la función multiplicación
 
+                print("\n S Volver a Multiplicar")
+                print("\n N Volver al menú principal")
+                sub_opcion = input("\nIngrese su opción: ").upper()  # Convierte a mayúsculas
+                if sub_opcion == "S":
+                    continue # Repite la multiplicación
+                elif sub_opcion == "N":
+                    return menu_principal()     # Vuelve al menú principal
+                else:
+                    print("Opción inválida. Regresando al menú principal.")
+                    return menu_principal()     # Vuelve al menú principal
                 
         elif opcion == "4":
             division()
@@ -111,9 +127,9 @@ def menu_principal():
 
 
         elif opcion == "0":
+            
             print("Hasta luego!")
             break
         else:
             print("\nOpción inválida. Por favor, inténtelo de nuevo.")
-
 menu_principal()
